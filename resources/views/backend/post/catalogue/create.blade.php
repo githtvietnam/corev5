@@ -24,7 +24,7 @@
                            <div class="ibox-title">
                               <div class="uk-flex uk-flex-middle uk-flex-space-between">
                                  <div>
-                                    <h5>Quản lý nhóm thành viên</h5>
+                                    <h5>Quản lý danh mục bài viết</h5>
                                     <small class="text-danger">điền đầy đủ các thông tin được mô tả dưới đây</small>
                                  </div>
                                  <button type="submit" name="create" value="create" class="btn btn-primary block m-b pull-right">Lưu lại</button>

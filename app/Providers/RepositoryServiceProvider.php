@@ -16,6 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
          'App\Repositories\Interfaces\TranslateRepositoryInterface' => 'App\Repositories\TranslateRepository',
          'App\Repositories\Interfaces\PermissionRepositoryInterface' => 'App\Repositories\PermissionRepository',
          'App\Repositories\Interfaces\UserCatalogueRepositoryInterface' => 'App\Repositories\UserCatalogueRepository',
+         'App\Repositories\Interfaces\PostCatalogueRepositoryInterface' => 'App\Repositories\PostCatalogueRepository',
      ];
 
    public function register()

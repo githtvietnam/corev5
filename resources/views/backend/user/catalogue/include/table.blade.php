@@ -1,20 +1,19 @@
 <table class="table table-bordered table-striped ver1  table100 border-checkbox-section">
    <thead>
       <tr>
-         <th style="width: 20px;">
+         <th logo-theme="theme1" style="width: 20px;">
             <div class="border-checkbox-group border-checkbox-group-primary">
                <input class="border-checkbox checkall" type="checkbox" id="checkAll">
                <label class="border-checkbox-label" for="checkAll"></label>
            </div>
          </th>
-         </th>
-         <th>ID</th>
-         <th>Tên Nhóm</th>
-         <th>Số Thành Viên</th>
-         <th class="text-center">Người tạo</th>
-         <th class="text-center">Ngày tạo</th>
-         <th class="text-center">Trạng Thái</th>
-         <th style="width:100px;" class="text-center">Thao tác</th>
+         <th logo-theme="theme1">ID</th>
+         <th logo-theme="theme1">Tên Nhóm</th>
+         <th logo-theme="theme1">Số Thành Viên</th>
+         <th logo-theme="theme1" class="text-center">Người tạo</th>
+         <th logo-theme="theme1" class="text-center">Ngày tạo</th>
+         <th logo-theme="theme1" class="text-center">Trạng Thái</th>
+         <th logo-theme="theme1" style="width:100px;" class="text-center">Thao tác</th>
       </tr>
    </thead>
    <tbody>

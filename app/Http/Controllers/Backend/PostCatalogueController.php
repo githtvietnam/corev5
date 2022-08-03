@@ -40,6 +40,7 @@ class PostCatalogueController extends Controller
       $config['ckeditor'] = config('apps.general.ckeditor');
       $config['select2'] = config('apps.general.select2');
       $config['class'] = config('apps.general.fix_class');
+      $config['method'] = 'create';
       $config['dropdown'] = $this->nestedsetbie->Dropdown();
       $template = 'backend/post/catalogue/create';
       return view('backend/dashboard/layout/home', compact('template', 'config'));

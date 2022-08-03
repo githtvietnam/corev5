@@ -13,6 +13,53 @@ HT.setupCKeditor = () => {
    }
 }
 
+HT.slugTitle = () => {
+   if($('.title').length){
+      $(document).on('keyup', '.title', function(){
+         let _this = $(this);
+         let metaTitle = _this.val();
+         let totalCharacter = metaTitle.length;
+         if(totalCharacter > 70){
+            $('.meta-title').addClass('input-error');
+         }else{
+            $('.meta-title').removeClass('input-error');
+         }
+         $('.g-title').text(metaTitle);
+         $('.meta-title').val(metaTitle);
+         let val = slug(metaTitle)
+         $('.g-link').text(BASE_URL + val + '.html');
+         $('.canonical').val(val)
+      });
+   }
+}
+
+HT.metaDescription = () => {
+   if($('.meta-description').length){
+      $(document).on('keyup change','.meta-description', function(){
+         let _this = $(this);
+         let totalCharacter = _this.val().length;
+         $('#descriptionCount').text(totalCharacter);
+         if(totalCharacter > 320){
+            _this.addClass('input-error');
+         }else{
+            _this.removeClass('input-error');
+         }
+         $('.g-description').text(_this.val());
+      });
+   }
+}
+
+HT.slugCanonical = () => {
+   if($('.canonical').length){
+      $(document).on('keyup','.canonical', function(){
+         let _this = $(this);
+         _this.attr('data-flag', '1');
+         let slugTitle = slug(_this.val());
+         $('.g-link').text(BASE_URL + slugTitle + '.html');
+      });
+   }
+}
+
 HT.setupSelect2 = () => {
    if($('.single-select2').length){
       $('.single-select2').select2();
@@ -168,7 +215,34 @@ HT.swalError = (title, message) => {
    swal(title, message, "error");
 }
 
+function slug(title){
+   title = cnvVi(title);
+   return title;
+}
 
+
+function cnvVi(str) {
+   str = str.toLowerCase(); // chuyen ve ki tu biet thuong
+   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+   str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+   str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+   str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+   str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+   str = str.replace(/đ/g, "d");
+   str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|,|\.|\:|\;|\'|\–| |\"|\&|\#|\[|\]|\\|\/|~|$|_/g, "-");
+   str = str.replace(/-+-/g, "-");
+   str = str.replace(/^\-+|\-+$/g, "");
+   return str;
+}
+function replace(Str=''){
+   if(Str==''){
+      return '';
+   }else{
+      Str = Str.replace(/\./gi, "");
+      return Str;
+   }
+}
 
 $(document).ready(function(){
 
@@ -181,7 +255,10 @@ $(document).ready(function(){
    HT.setupCKeditor();
    HT.setupSelect2();
    HT.deleteRecord();
+   HT.metaDescription();
    HT.checkbox();
+   HT.slugTitle();
+   HT.slugCanonical();
    HT.checkAll();
    HT.updateField();
    HT.changeDefaultLanguage();

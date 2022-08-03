@@ -1,4 +1,6 @@
-
+.input-error{
+   border-bottom: 1px solid red;
+}
 h5{
    font-weight: normal;
    text-transform: uppercase;

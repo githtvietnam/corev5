@@ -4,7 +4,7 @@
          <label class="control-label text-left">
             <span>Tiêu đề <b class="text-danger">(*)</b></span>
          </label>
-            <input type="text" name="name" value="{{ old('title') }}"  class="form-control" placeholder="" autocomplete="off" id="title" data-flag="0">
+            <input type="text" name="name" value="{{ old('title') }}"  class="form-control {{ (isset($config['method']) && $config['method'] == 'create' ? 'title' : '') }}" placeholder="" autocomplete="off" id="title" data-flag="0">
       </div>
    </div>
 </div>

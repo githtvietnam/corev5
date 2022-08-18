@@ -22,7 +22,16 @@
             @foreach($permissions as $keyItem => $item)
             <div class="col-lg-3 mb10">
                <div class="permission-item uk-flex uk-flex-middle">
-                  <input name="permissions[]" value="{{ $item['route'] }}" type="checkbox"  class="js-switch js-small" data-color="rgb(252, 97, 128)" data-size="small" id="checkbox-{{ $keyItem }}-{{ $key }}"  >
+                  <input
+                     name="permissions[]"
+                     value="{{ $item['route'] }}"
+                     type="checkbox"
+                     class="js-switch js-small"
+                     data-color="rgb(252, 97, 128)"
+                     {{ ((isset($userCatalogue->permissions)  && in_array($item['route'], json_decode($userCatalogue->permissions), TRUE)) ? 'checked' : '') }}
+                     data-size="small"
+                     id="checkbox-{{ $keyItem }}-{{ $key }}"
+                     >
                   <label class="permission-text ml10" for="checkbox-{{ $keyItem }}-{{ $key }}" style="margin-bottom:0;cursor:pointer;">{{ $item['name'] }}</label>
                </div>
             </div>

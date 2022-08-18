@@ -13,7 +13,7 @@
          <div class="uk-flex uk-flex-middle uk-flex-space-between">
             <div class="uk-search uk-flex uk-flex-middle mr10 ml10">
                <div class="search-group uk-flex uk-flex-middle">
-                  <input type="text" name="keyword" value="" placeholder="Nhập từ khóa tìm kiếm..." class="form-control">
+                  <input type="text" name="keyword" value="{{ app('request')->input('keyword') }}" placeholder="Nhập từ khóa tìm kiếm..." class="form-control">
                   <span class="input-group-btn">
                      <button type="submit" name="search" value="search" class="btn btn-primary mb0    btn-sm">Tìm kiếm </button>
                   </span>

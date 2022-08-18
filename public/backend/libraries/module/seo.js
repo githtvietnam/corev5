@@ -1,11 +1,3 @@
-var HT = {};
-
-
-// Check if element exists
-$.fn.elExists = function() {
-return this.length > 0;
-};
-
 
 HT.toggleEditSeo = () => {
    if($('.edit-seo').length){

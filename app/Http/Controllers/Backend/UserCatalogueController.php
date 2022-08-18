@@ -37,7 +37,7 @@ class UserCatalogueController extends Controller
     {
       $userCatalogue = $this->userCatalogueService->index($request);
       $config['switchery'] = config('apps.general.switchery');
-      $config['js'] = config('apps.general.js');
+      $config['js'] = config('apps.user_catalogue.js');
       $config['meta_title'] = config('apps.user_catalogue.index_meta_title');
       $config['moduleName'] = config('apps.user_catalogue.module');
       $template = 'backend.user.catalogue.index';
@@ -52,7 +52,7 @@ class UserCatalogueController extends Controller
     public function create()
     {
       $permission= makeNewArrayByKey($this->permissionRepository->allByCondition(['id','name','module','route'], ['publish' => 1]));
-      $config['js'] = 'user_catalogue';
+      $config['js'] = config('apps.user_catalogue.js');
       $config['ckeditor'] = config('apps.general.ckeditor');
       $config['select2'] = config('apps.general.select2');
       $config['switchery'] = config('apps.general.switchery');
@@ -71,9 +71,9 @@ class UserCatalogueController extends Controller
     public function store(StoreUserCatalogueRequest $request)
     {
       if($this->userCatalogueService->create($request)){
-         return redirect()->route('user_catalogue.index')->with('success', config('apps.general.success_create'));
+         return redirect()->route('user.catalogue.index')->with('success', config('apps.general.success_create'));
       }else{
-         return redirect()->route('user_catalogue.index')->with('error',config('apps.general.error_create'));
+         return redirect()->route('user.catalogue.index')->with('error',config('apps.general.error_create'));
       }
     }
 
@@ -97,14 +97,15 @@ class UserCatalogueController extends Controller
     public function edit($id)
     {
       $userCatalogue = $this->userCatalogueRepository->findById($id);
-      $config['js'] = 'user_catalogue';
+      $permission= makeNewArrayByKey($this->permissionRepository->allByCondition(['id','name','module','route'], ['publish' => 1]));
+      $config['js'] = config('apps.user_catalogue.js');
       $config['ckeditor'] = config('apps.general.ckeditor');
       $config['select2'] = config('apps.general.select2');
-      $config['class'] = config('apps.general.fix_class');
       $config['moduleName'] = config('apps.user_catalogue.module');
+      $config['switchery'] = config('apps.general.switchery');
       $config['meta_title'] = config('apps.user_catalogue.update_meta_title');
       $template = 'backend.user.catalogue.update';
-      return view('backend.dashboard.layout.home', compact('template', 'config', 'userCatalogue'));
+      return view('backend.dashboard.layout.home', compact('template', 'config', 'userCatalogue','permission'));
     }
 
     /**
@@ -117,9 +118,9 @@ class UserCatalogueController extends Controller
     public function update(Request $request, $id)
     {
       if($this->userCatalogueService->update($id, $request)){
-         return redirect()->route('user_catalogue.index')->with('success', config('apps.general.success_create'));
+         return redirect()->route('user.catalogue.index')->with('success', config('apps.general.success_update'));
       }else{
-         return redirect()->route('user_catalogue.index')->with('error',config('apps.general.error_create'));
+         return redirect()->route('user.catalogue.index')->with('error',config('apps.general.error_create'));
       }
     }
 
@@ -132,9 +133,9 @@ class UserCatalogueController extends Controller
     public function destroy($id)
     {
       if($this->userCatalogueService->delete($id)){
-         return redirect()->route('user_catalogue.index')->with('success', config('apps.general.success_delete'));
+         return redirect()->route('user.catalogue.index')->with('success', config('apps.general.success_delete'));
       }else{
-         return redirect()->route('user_catalogue.index')->with('error',config('apps.general.error'));
+         return redirect()->route('user.catalogue.index')->with('error',config('apps.general.error'));
       }
     }
 }

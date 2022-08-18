@@ -48,7 +48,7 @@
                     </li>
                 </ul>
            </li>
-           <li class="pcoded-hasmenu {{ ( $uriModule == 'user' ) ? 'pcoded-trigger'  : '' }}">
+           <li class="pcoded-hasmenu {{ ( $uriModule == 'user'  ) ? 'pcoded-trigger'  : '' }}">
                 <a href="javascript:void(0)">
                     <span class="pcoded-micon"><i class="feather icon-user"></i></span>
                     <span class="pcoded-mtext">QL Thành Viên</span>
@@ -60,7 +60,7 @@
                        </a>
                     </li>
                     <li class="{{ ( $uriMainModule == 'user' ) ? 'active'  : '' }}">
-                       <a href="">
+                       <a href="{{ route('user.index') }}">
                            <span class="pcoded-mtext">QL Thành Viên</span>
                        </a>
                     </li>

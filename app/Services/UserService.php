@@ -2,44 +2,44 @@
 
 namespace App\Services;
 
-use App\Services\Interfaces\UserCatalogueServiceInterface;
-use App\Repositories\Interfaces\UserCatalogueRepositoryInterface as UserCatalogueRepository;
+use App\Services\Interfaces\UserServiceInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface as UserRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Models\UserCatalogue;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 /**
- * Class UserCatalogueService
+ * Class UserService
  * @package App\Services
  */
-class UserCatalogueService implements UserCatalogueServiceInterface
+class UserService implements UserServiceInterface
 {
 
-   public $UserCatalogueRepository;
+   public $userRepository;
 
    public function __construct(
-      UserCatalogueRepository $UserCatalogueRepository
+      UserRepository $userRepository
    ){
-      $this->userCatalogueRepository = $UserCatalogueRepository;
+      $this->userRepository = $userRepository;
    }
 
    public function index($request){
       $condition['keyword'] = addslashes($request->input('keyword'));
       $condition['publish'] = $request->input('publish');
       $perpage = $request->input('perpage') ?? 20;
-      $translate = $this->userCatalogueRepository->paginateUserCatalogue($perpage, $condition);
-      return $translate;
+      $user = $this->userRepository->paginateUser($perpage, $condition);
+      return $user;
    }
 
    public function create($request){
       DB::beginTransaction();
       try{
-         $translate = $this->userCatalogueRepository->create([
-            'name' => $request->name,
-            'permissions' => json_encode($request->permissions),
-            'publish' => 1,
-         ]);
-
+         // dd($request->all());
+         $insert = $request->except('_token','create','password');
+         $insert['password'] = bcrypt($request->password);
+         // dd($insert);
+         $user = $this->userRepository->create($insert);
          DB::commit();
          return true;
       }catch(\Exception $e ){
@@ -54,10 +54,8 @@ class UserCatalogueService implements UserCatalogueServiceInterface
       DB::beginTransaction();
       try{
          $update = $request->except(['_token','create']);
-         if(!array_key_exists('permissions', $update)){
-            $update['permissions'] = json_encode([]);
-         }
-         $translate = $this->userCatalogueRepository->update($id, $update);
+
+         $user = $this->userRepository->update($id, $update);
 
          DB::commit();
          return true;
@@ -72,7 +70,7 @@ class UserCatalogueService implements UserCatalogueServiceInterface
    public function delete($id){
       DB::beginTransaction();
       try{
-         $translate = $this->userCatalogueRepository->deleteById($id);
+         $user = $this->userRepository->deleteById($id);
 
          DB::commit();
          return true;
@@ -84,14 +82,14 @@ class UserCatalogueService implements UserCatalogueServiceInterface
       }
    }
 
-   public function updateUserCatalogueStatus($request){
+   public function updateByField($request){
       DB::beginTransaction();
       try{
-         $object = $this->userCatalogueRepository->findById($request->id);
-         $columnValue = ($object->publish == 1) ? 0  : 1;
+         $object = $this->userRepository->findById($request->id);
+         $columnValue = ($object->{$request->column} == 1) ? 0  : 1;
 
-         $userCatalogue = $this->userCatalogueRepository->update($request->id, [
-            'publish' => $columnValue
+         $translate = $this->userRepository->update($request->id, [
+            $request->column => $columnValue
          ]);
 
          DB::commit();
@@ -103,5 +101,4 @@ class UserCatalogueService implements UserCatalogueServiceInterface
           return false;
       }
    }
-
 }

@@ -20,8 +20,8 @@
                </div>
             </div>
             <div class="uk-button">
-               <a href="{{ route('translate.create') }}" class="btn btn-danger btn-sm">
-                  <i class="fa fa-plus"></i>Thêm ngôn ngữ mới </a>
+               <a href="{{ route('user.create') }}" class="btn btn-danger btn-sm">
+                  <i class="fa fa-plus"></i>Thêm {{ config('apps.user.module') }} mới </a>
             </div>
          </div>
       </div>

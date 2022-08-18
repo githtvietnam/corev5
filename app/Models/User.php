@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_catalogue_id',
+        'address',
+        'phone',
+        'gender',
+        'image',
+        'publish',
     ];
 
 
@@ -42,4 +48,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $table = 'users';
+
+
+    public function user_catalogues(){
+      return $this->belongsTo(UserCatalogue::class, 'user_catalogue_id', 'id');
+   }
 }

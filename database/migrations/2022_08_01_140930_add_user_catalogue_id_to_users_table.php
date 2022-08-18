@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_catalogues', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->bigInteger('user_catalogue_id')->after('id')->default('0')->unsigned();
+            $table->foreign('user_catalogue_id')->references('id')->on('user_catalogues')->onDelete('cascade');
         });
-
-        // Cái này em xóa nhé cứ làm đi
     }
 
     /**
@@ -28,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_catalogues');
+        Schema::table('users', function (Blueprint $table) {
+          $table->dropColumn('user_catalogue_id');
+        });
     }
 };

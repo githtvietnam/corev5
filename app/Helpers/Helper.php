@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 function makeNewArrayByKey($payload){
    $newArray = [];
    foreach($payload as $key => $val){
@@ -11,4 +13,9 @@ function makeNewArrayByKey($payload){
       ];
    }
    return $newArray;
+}
+
+function getUserInformation(){
+   $user = Auth::user();
+   return $user;
 }

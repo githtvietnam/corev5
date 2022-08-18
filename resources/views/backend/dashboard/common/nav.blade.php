@@ -1,3 +1,6 @@
+@php
+   $account = getUserInformation();
+@endphp
 <nav class="navbar header-navbar pcoded-header">
    <div class="navbar-wrapper">
 
@@ -46,7 +49,7 @@
                                 <div class="media">
                                     <img class="d-flex align-self-center img-radius" src="{{ PUBLIC_URL }}files/assets/images/avatar-4.jpg" alt="Generic placeholder image">
                                     <div class="media-body">
-                                        <h5 class="notification-user">John Doe</h5>
+                                        <h5 class="notification-user"></h5>
                                         <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
                                         <span class="notification-time">30 minutes ago</span>
                                     </div>
@@ -87,33 +90,23 @@
                     <div class="dropdown-primary dropdown">
                         <div class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ PUBLIC_URL }}files/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                            <span>John Doe</span>
+                            <span>{{ $account->name }}</span>
                             <i class="feather icon-chevron-down"></i>
                         </div>
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                           <li>
+                              <a href="user-profile.htm">
+                                   <i class="feather icon-user"></i> Thông tin cá nhân
+                              </a>
+                           </li>
                             <li>
                                 <a href="#!">
-                                    <i class="feather icon-settings"></i> Settings
+                                    <i class="feather icon-settings"></i> Đổi mật khẩu
                                 </a>
                             </li>
                             <li>
-                                <a href="user-profile.htm">
-                                    <i class="feather icon-user"></i> Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="email-inbox.htm">
-                                    <i class="feather icon-mail"></i> My Messages
-                                </a>
-                            </li>
-                            <li>
-                                <a href="auth-lock-screen.htm">
-                                    <i class="feather icon-lock"></i> Lock Screen
-                                </a>
-                            </li>
-                            <li>
-                                <a href="auth-normal-sign-in.htm">
-                                    <i class="feather icon-log-out"></i> Logout
+                                <a href="{{ route('auth.logout') }}">
+                                    <i class="feather icon-log-out"></i> Đăng xuất
                                 </a>
                             </li>
                         </ul>

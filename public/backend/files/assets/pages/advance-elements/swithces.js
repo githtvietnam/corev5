@@ -14,8 +14,6 @@ $(document).ready(function() {
 			size = 'medium'
 		}
 
-		console.log(html.getAttribute('data-color'));
-
 		if(html.getAttribute('data-color') == 'null'){
 			color = '#4680ff'
 		}else{

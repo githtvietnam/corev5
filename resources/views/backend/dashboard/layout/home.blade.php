@@ -104,26 +104,27 @@
     <script src="{{ PUBLIC_URL }}files/assets/js/vartical-layout.min.js"></script>
     <script type="text/javascript" src="{{ PUBLIC_URL }}files/assets/js/script.min.js"></script>
 
-@if(isset($config['ckeditor']) && $config['ckeditor'] == config('apps.general.ckeditor'))
+    @if(isset($config['ckeditor']) && $config['ckeditor'] == config('apps.general.ckeditor'))
    <script src="{{ PUBLIC_URL }}libraries/ckeditor/ckeditor.js"></script>
    <script src="{{ PUBLIC_URL }}libraries/ckfinder/ckfinder.js"></script>
    <script src="{{ PUBLIC_URL }}libraries/module/editor.js"></script>
    <script src="{{ PUBLIC_URL }}libraries/module/finder.js"></script>
-@endif
+   @endif
 
-@if(isset($config['seo']) && $config['seo'] == config('apps.general.seo'))
-   <script src="{{ PUBLIC_URL }}libraries/module/seo.js"></script>
-@endif
 
-@if(isset($config['select2']) && $config['select2'] == config('apps.general.select2'))
+
+   @if(isset($config['select2']) && $config['select2'] == config('apps.general.select2'))
    <script src="{{ PUBLIC_URL }}libraries/select2/dist/js/select2.min.js"></script>
-@endif
-
-@if(isset($config['js']))
-   <script src="{{ PUBLIC_URL }}libraries/module/{{ $config['js'] }}.js"></script>
-@endif
+   @endif
 
    <script src="{{ PUBLIC_URL }}libraries/module/system.js"></script>
+
+   @if(isset($config['js']))
+      <script src="{{ PUBLIC_URL }}libraries/module/{{ $config['js'] }}.js"></script>
+   @endif
+   @if(isset($config['seo']) && $config['seo'] == config('apps.general.seo'))
+   <script src="{{ PUBLIC_URL }}libraries/module/seo.js"></script>
+   @endif
 
 </body>
 

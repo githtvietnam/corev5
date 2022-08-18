@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
          'App\Services\Interfaces\TranslateServiceInterface' => 'App\Services\TranslateService',
          'App\Services\Interfaces\PermissionServiceInterface' => 'App\Services\PermissionService',
          'App\Services\Interfaces\UserCatalogueServiceInterface' => 'App\Services\UserCatalogueService',
+         'App\Services\Interfaces\UserServiceInterface' => 'App\Services\UserService',
      ];
 
 
@@ -35,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
 
       $this->app->register(RepositoryServiceProvider::class);
 
-   
+
    }
 
     /**

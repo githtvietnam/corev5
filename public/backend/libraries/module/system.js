@@ -1,7 +1,6 @@
 var HT = {};
 
 
-
 HT.setupCKeditor = () => {
    if($('.ck-editor').length){
       $('.ck-editor').each(function(){
@@ -92,9 +91,6 @@ HT.checkbox = () => {
    }
 }
 
-
-
-
 HT.checkAll = () => {
    if($('.checkall').length){
       $(document).on('click','.checkall' , function(){
@@ -126,6 +122,9 @@ HT.processCheckAll = (object) => {
 		}
    }
 }
+
+
+
 
 HT.checkItemAll = (object) => {
    let table = object.parents('table')
@@ -167,8 +166,6 @@ HT.swalConfirm = (title, message, form) => {
 HT.swalError = (title, message) => {
    swal(title, message, "error");
 }
-
-
 
 $(document).ready(function(){
 

@@ -27,5 +27,9 @@ return [
       'permisisons' => 'Quản Lý Phân Quyền',
       'users' => 'Quản lý Thành Viên',
       'user_catalogues' => 'Quản lý Nhóm Thành Viên'
+   ],
+   'gender' => [
+      0 => 'Nữ',
+      1 => 'Nam'
    ]
 ];

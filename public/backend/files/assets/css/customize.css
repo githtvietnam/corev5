@@ -494,3 +494,14 @@ table.border-checkbox-section .border-checkbox-group .border-checkbox-label:afte
 .ml10{
    margin-left:10px;
 }
+.control-label{
+   font-weight: 600;
+}
+.form-control:focus,
+.form-control{
+   color:#1c84c6;
+   font-weight:600;
+}
+.form-row .avatar{
+   width:100%;
+}

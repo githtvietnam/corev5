@@ -12,6 +12,53 @@ HT.setupCKeditor = () => {
    }
 }
 
+HT.slugTitle = () => {
+   if($('.title').length){
+      $(document).on('keyup', '.title', function(){
+         let _this = $(this);
+         let metaTitle = _this.val();
+         let totalCharacter = metaTitle.length;
+         if(totalCharacter > 70){
+            $('.meta-title').addClass('input-error');
+         }else{
+            $('.meta-title').removeClass('input-error');
+         }
+         $('.g-title').text(metaTitle);
+         $('.meta-title').val(metaTitle);
+         let val = slug(metaTitle)
+         $('.g-link').text(BASE_URL + val + '.html');
+         $('.canonical').val(val)
+      });
+   }
+}
+
+HT.metaDescription = () => {
+   if($('.meta-description').length){
+      $(document).on('keyup change','.meta-description', function(){
+         let _this = $(this);
+         let totalCharacter = _this.val().length;
+         $('#descriptionCount').text(totalCharacter);
+         if(totalCharacter > 320){
+            _this.addClass('input-error');
+         }else{
+            _this.removeClass('input-error');
+         }
+         $('.g-description').text(_this.val());
+      });
+   }
+}
+
+HT.slugCanonical = () => {
+   if($('.canonical').length){
+      $(document).on('keyup','.canonical', function(){
+         let _this = $(this);
+         _this.attr('data-flag', '1');
+         let slugTitle = slug(_this.val());
+         $('.g-link').text(BASE_URL + slugTitle + '.html');
+      });
+   }
+}
+
 HT.setupSelect2 = () => {
    if($('.single-select2').length){
       $('.single-select2').select2();
@@ -178,7 +225,10 @@ $(document).ready(function(){
    HT.setupCKeditor();
    HT.setupSelect2();
    HT.deleteRecord();
+   HT.metaDescription();
    HT.checkbox();
+   HT.slugTitle();
+   HT.slugCanonical();
    HT.checkAll();
    HT.updateField();
    HT.changeDefaultLanguage();

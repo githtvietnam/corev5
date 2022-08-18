@@ -1,7 +1,7 @@
 <table class="table table-bordered table-striped ver1  table100 border-checkbox-section">
    <thead>
       <tr>
-         <th style="width: 20px;">
+         <th logo-theme="theme1" style="width: 20px;">
             <div class="border-checkbox-group border-checkbox-group-primary">
                <input class="border-checkbox checkall" type="checkbox" id="checkAll">
                <label class="border-checkbox-label" for="checkAll"></label>

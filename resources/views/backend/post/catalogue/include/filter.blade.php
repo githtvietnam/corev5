@@ -4,7 +4,7 @@
          <div class="uk-flex uk-flex-middle ">
             <select name="perpage" class="form-control input-sm perpage filter mr10">
                @foreach (config('apps.general.perpage') as $perpage)
-                  <option value="{{ $perpage }}">{{ $perpage }} bản ghi</option>
+               <option value="{{ $perpage }}">{{ $perpage }} bản ghi</option>
                @endforeach
             </select>
          </div>
@@ -29,7 +29,7 @@
             </div>
             <div class="uk-button">
                <a href="{{ route('post.catalogue.create') }}" class="btn btn-danger btn-sm">
-                  <i class="fa fa-plus"></i>Thêm Bài Viết mới </a>
+               <i class="fa fa-plus"></i>Thêm Nhóm Bài Viết mới </a>
             </div>
          </div>
       </div>

@@ -5,7 +5,7 @@
    <div class="navbar-wrapper">
 
         <div class="navbar-logo">
-            <a class="mobile-menu" id="mobile-collapse" href="#!">
+            <a class="mobile-menu" id="mobile-collapse" href="" onclick="return false">
                 <i class="feather icon-menu"></i>
             </a>
             <a href="index-1.htm">
@@ -28,7 +28,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#!" onclick="javascript:toggleFullScreen()">
+                    <a href="" onclick="javascript:toggleFullScreen();return false;">
                         <i class="feather icon-maximize full-screen"></i>
                     </a>
                 </li>

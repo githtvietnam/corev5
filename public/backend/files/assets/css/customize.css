@@ -1,4 +1,6 @@
-
+.input-error{
+   border-bottom: 1px solid red;
+}
 h5{
    font-weight: normal;
    text-transform: uppercase;
@@ -285,9 +287,6 @@ input.canonical{
 .main-body .page-wrapper{
    padding:20px;
    padding-top:0;
-}
-.card{
-   margin-bottom:0;
 }
 
 /* TABLES */
